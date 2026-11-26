@@ -1,0 +1,11 @@
+#!/bin/bash
+# Runs as root after install: create the user sample folder and refresh the AU cache
+USER_NAME=$(stat -f%Su /dev/console)
+if [ -n "$USER_NAME" ] && [ "$USER_NAME" != "root" ]; then
+    HOME_DIR=$(dscl . -read "/Users/$USER_NAME" NFSHomeDirectory | sed 's/^NFSHomeDirectory: //')
+    if [ -d "$HOME_DIR" ]; then
+        sudo -u "$USER_NAME" mkdir -p "$HOME_DIR/Documents/gen synth/samples"
+    fi
+fi
+killall -9 AudioComponentRegistrar 2>/dev/null || true
+exit 0

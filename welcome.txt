@@ -1,0 +1,11 @@
+gen synth
+
+A multisample synthesizer (Audio Unit) with layered keys, pads, bells and textures.
+
+This installer places "gen synth.component" in:
+/Library/Audio/Plug-Ins/Components
+
+It also creates a sample folder for your own instruments:
+~/Documents/gen synth/samples
+
+After installing, open FL Studio, go to Plugin Manager and click "Find plugins".
